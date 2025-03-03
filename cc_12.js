@@ -13,14 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const metricDiv = document.createElement("div");
         metricDiv.setAttribute("id", id);                       //Setting an ID 
         metricDiv.setAttribute("class", "metric-card");         //Assigning the class "metric-card"
-        const heading = document.createElement("h3");
-        heading.textContent = title;
-        const paragraph = document.createElement("p")
-        paragraph.textContent = `$${amount}`;
-        metricDiv.appendChild(heading);
-        metricDiv.appendChild(paragraph);
+        const heading = document.createElement("h3");           //CReate h3 element for title
+        heading.textContent = title;                            //Setting the text content for the title
+        const paragraph = document.createElement("p")           //Create Paragraph element
+        paragraph.textContent = `$${amount}`;                   //Setting dollar amount
+        metricDiv.appendChild(heading);                         //Append heading to the metric card
+        metricDiv.appendChild(paragraph);                       //Append paragraph to the metric card
 
-        return metricDiv;
+        return metricDiv;                               //Returning the created metric card
     }
 });
+
+// Task 2: Updating Dashboard Metrics – Working with NodeLists and Arrays
+
+
 
