@@ -26,5 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Task 2: Updating Dashboard Metrics – Working with NodeLists and Arrays
 
+const metricCards = document.querySelectorAll(".metric-card");   //Selected all metric cards
+const metricCardArray = [...metricCards];                        //Convert list to an Array
 
+metricCardArray.forEach((card) => {
+    const title = card.querySelector("h3");
+    title.innerText += " - Updated";
+    card.computedStyleMap.backgroundColor = "puple";
+});
 
