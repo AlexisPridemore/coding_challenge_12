@@ -1,28 +1,18 @@
 // Task 1: Business Dashboard – DOM Element Selection and Creation
 
-//Ensuring the script runs only after the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", function () {  
-    const dashBoardDiv = document.getElementById("dashboard");     //select the dashboard container
-    const dashBoardDivAlt = document.querySelector("#dashboard");  //select the dashboard container
+const dashboardById = document.getElementById("dashboard");
+const dashboardByQuery = document.querySelector("#dashboard");
 
-    //Appending Revenue card first
-    dashBoardDiv.appendChild(createMetricCard("revenueCard", "Revenue", 1200)); 
-
-    //function to create a metric card
-    function createMetricCard(id, title, amount) {       
-        const metricDiv = document.createElement("div");
-        metricDiv.setAttribute("id", id);                       //Setting an ID 
-        metricDiv.setAttribute("class", "metric-card");         //Assigning the class "metric-card"
-        const heading = document.createElement("h3");           //CReate h3 element for title
-        heading.textContent = title;                            //Setting the text content for the title
-        const paragraph = document.createElement("p")           //Create Paragraph element
-        paragraph.textContent = `$${amount}`;                   //Setting dollar amount
-        metricDiv.appendChild(heading);                         //Append heading to the metric card
-        metricDiv.appendChild(paragraph);                       //Append paragraph to the metric card
-
-        return metricDiv;                               //Returning the created metric card
-    }
-});
+function createMetricCard(id, title) {
+    const card = document.createElement("div");
+    card.setAttribute("class", "metric-card");
+    card.setAttribute("id", id);
+    card.innerHTML = `
+    <h3>${title}</h3>
+    <p>$0</p>
+    `;
+    return card;
+};
 
 // Task 2: Updating Dashboard Metrics – Working with NodeLists and Arrays
 
@@ -65,6 +55,26 @@ document.getElementById("addProductButton").addEventListener("click", () => {
     addInventoryItem("Exclusive: Blondie");
 });
 
+// Task 4: Business Customer Section – Handling Event Bubbling
 
+const customerSection = document.getElementById("customerSection");
+
+customerSection.addEventListener("click", () => {
+    console.log("This item has been selected");
+});
+
+const customers = ["Customer 1", "Customer 2"];
+
+customers.forEach((name) => {
+    const customerCard = document.createElement("div");
+    customerCard.classList.add("customer-card");
+    customerCard.innerText = name;
+
+    customerCard.addEventListener("click", (event) => {
+        console.log(name + " has been selected");
+        event.stopPropagation();
+    });
+    customerSection.appendChild(customerCard);
+});
 
 
