@@ -32,7 +32,7 @@ const metricCardArray = [...metricCards];                        //Convert list 
 metricCardArray.forEach((card) => {
     const title = card.querySelector("h3");
     title.innerText += " - Updated";
-    card.computedStyleMap.backgroundColor = "puple";
+    card.computedStyleMap.backgroundColor = "lightPurple";
 });
 
 //Added 3 metric cards 
@@ -45,3 +45,26 @@ document.getElementById("profitCard").querySelector("p").innerText = "$600";
 document.getElementById("expensesCard").querySelector("p").innerText = "$800";
 
 // Task 3: Dynamic Inventory Management – Adding and Removing Items
+
+function addInventoryItem(productName) {
+    const inventroyList = document.getElementById("inventoryList");
+    const productItem = document.createElement("li");
+    productItem.setAttribute("class", "product-item");
+    productItem.innerText = productName;
+    productItem.addEventListener("click", () => {
+        removeProductItem(productItem);
+    });
+    inventroyList.appendChild(productItem);
+};
+
+//Test case: adding products
+addInventoryItem("Mocha");
+addInventoryItem("Latte");
+
+document.getElementById("addProductButton").addEventListener("click", () => {
+    addInventoryItem("Exclusive: Blondie");
+});
+
+
+
+
