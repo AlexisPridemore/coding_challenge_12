@@ -14,9 +14,9 @@ function createMetricCard(id, title) {
 }
 
 // Added 3 metric cards and the basic starting values 
-dashboardById.appendChild(createMetricCard("revenueCard", "Revenue"));
-dashboardById.appendChild(createMetricCard("profitCard", "Profit"));
-dashboardById.appendChild(createMetricCard("expensesCard", "Expenses"));
+dashboardById.appendChild(createMetricCard("revenueCard", "Revenue"));  //Revenue card 
+dashboardById.appendChild(createMetricCard("profitCard", "Profit"));    //Profit card added
+dashboardById.appendChild(createMetricCard("expensesCard", "Expenses")); //Expenses card added
 // value: 
 document.getElementById("revenueCard").querySelector("p").innerText = "$1600";
 document.getElementById("profitCard").querySelector("p").innerText = "$400";
@@ -29,15 +29,15 @@ const metricCardArray = [...metricCards];  // Convert List to an Array
  metricCardArray.forEach(card => {
         const title = card.querySelector("h3");
         title.innerText += " - Updated";
-        card.style.backgroundColor = "lightblue";
+        card.style.backgroundColor = "lightblue";  //Modify styles
   });
 
   // Task 3: Dynamic Inventory Management - Adding and Removing Items 
     // Adding  a product to the inventory list
 function addInventoryItem(productName) {
     const inventoryList = document.getElementById("inventoryList");  // selecting  the inventory list
-    const productItem = document.createElement("li");  // created a  list item
-    productItem.setAttribute("class", "product-item");  // added a  class for styling
+    const productItem = document.createElement("li");  // created a list item
+    productItem.setAttribute("class", "product-item");  // added a class for styling
     productItem.innerText = productName;  // set product name as text
 
     // Add click event to remove the item when clicked
@@ -48,7 +48,7 @@ function addInventoryItem(productName) {
     inventoryList.appendChild(productItem);  // added item to the list
 };
 
-// removing the  product item from the list
+// removing the product item from the list
 function removeProductItem(item) {
     const inventoryList = document.getElementById("inventoryList");
     inventoryList.removeChild(item);  // removes the clicked item
@@ -64,6 +64,7 @@ document.getElementById("addProductButton").addEventListener("click", () => {
 });
 
 // Task 4 - business customer section - event bubbling 
+
 // Selecting the customer section 
 const customerSection = document.getElementById("customerSection");
 
