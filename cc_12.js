@@ -1,68 +1,78 @@
-// Task 1: Business Dashboard – DOM Element Selection and Creation
-
-const dashboardById = document.getElementById("dashboard");
-const dashboardByQuery = document.querySelector("#dashboard");
-
+// Task 1: Business Dashboard- DOM element selection 
+const dashboardById = document.getElementById("dashboard");    // selecting by ID 
+const dashboardByQuery = document.querySelector("#dashboard"); // selecting using the querySelector 
+   // creating  a metric card
 function createMetricCard(id, title) {
     const card = document.createElement("div");
     card.setAttribute("class", "metric-card");
     card.setAttribute("id", id);
     card.innerHTML = `
-    <h3>${title}</h3>
-    <p>$0</p>
+        <h3>${title}</h3>
+        <p>$0</p>
     `;
     return card;
-};
+}
 
-// Task 2: Updating Dashboard Metrics – Working with NodeLists and Arrays
-
-const metricCards = document.querySelectorAll(".metric-card");   //Selected all metric cards
-const metricCardArray = [...metricCards];                        //Convert list to an Array
-
-metricCardArray.forEach((card) => {
-    const title = card.querySelector("h3");
-    title.innerText += " - Updated";
-    card.computedStyleMap.backgroundColor = "lightPurple";
-});
-
-//Added 3 metric cards 
+// Added 3 metric cards and the basic starting values 
 dashboardById.appendChild(createMetricCard("revenueCard", "Revenue"));
 dashboardById.appendChild(createMetricCard("profitCard", "Profit"));
 dashboardById.appendChild(createMetricCard("expensesCard", "Expenses"));
-//Added starting values
-document.getElementById("revenuueCard").querySelector("p").innerText = "$400";
-document.getElementById("profitCard").querySelector("p").innerText = "$600";
-document.getElementById("expensesCard").querySelector("p").innerText = "$800";
+// value: 
+document.getElementById("revenueCard").querySelector("p").innerText = "$1600";
+document.getElementById("profitCard").querySelector("p").innerText = "$400";
+document.getElementById("expensesCard").querySelector("p").innerText = "$900";
 
-// Task 3: Dynamic Inventory Management – Adding and Removing Items
+// Task 2: Updating Dashboard Metrics – Working with NodeLists and Arrays
 
+const metricCards = document.querySelectorAll(".metric-card"); // selected all metric cards
+const metricCardArray = [...metricCards];  // Convert List to an Array
+ metricCardArray.forEach(card => {
+        const title = card.querySelector("h3");
+        title.innerText += " - Updated";
+        card.style.backgroundColor = "lightblue";
+  });
+
+  // Task 3: Dynamic Inventory Management - Adding and Removing Items 
+    // Adding  a product to the inventory list
 function addInventoryItem(productName) {
-    const inventroyList = document.getElementById("inventoryList");
-    const productItem = document.createElement("li");
-    productItem.setAttribute("class", "product-item");
-    productItem.innerText = productName;
+    const inventoryList = document.getElementById("inventoryList");  // selecting  the inventory list
+    const productItem = document.createElement("li");  // created a  list item
+    productItem.setAttribute("class", "product-item");  // added a  class for styling
+    productItem.innerText = productName;  // set product name as text
+
+    // Add click event to remove the item when clicked
     productItem.addEventListener("click", () => {
-        removeProductItem(productItem);
+        removeProductItem(productItem);  // call removes function when clicked
     });
-    inventroyList.appendChild(productItem);
+
+    inventoryList.appendChild(productItem);  // added item to the list
 };
 
-//Test case: adding products
+// removing the  product item from the list
+function removeProductItem(item) {
+    const inventoryList = document.getElementById("inventoryList");
+    inventoryList.removeChild(item);  // removes the clicked item
+};
+
+// Test case: adding products 
 addInventoryItem("Mocha");
 addInventoryItem("Latte");
 
+// adding  the product button  
 document.getElementById("addProductButton").addEventListener("click", () => {
-    addInventoryItem("Exclusive: Blondie");
+    addInventoryItem("Seasonal Blondie");  // 
 });
 
-// Task 4: Business Customer Section – Handling Event Bubbling
-
+// Task 4 - business customer section - event bubbling 
+// Selecting the customer section 
 const customerSection = document.getElementById("customerSection");
 
+// Added event listener 
 customerSection.addEventListener("click", () => {
     console.log("This item has been selected");
 });
 
+// Create customer cards
 const customers = ["Customer 1", "Customer 2"];
 
 customers.forEach((name) => {
@@ -70,11 +80,11 @@ customers.forEach((name) => {
     customerCard.classList.add("customer-card");
     customerCard.innerText = name;
 
+    // Add click event to each customer card
     customerCard.addEventListener("click", (event) => {
         console.log(name + " has been selected");
-        event.stopPropagation();
+        event.stopPropagation();  // Prevents parent click event from firing
     });
-    customerSection.appendChild(customerCard);
+
+    customerSection.appendChild(customerCard);  // Add to the customer section
 });
-
-
