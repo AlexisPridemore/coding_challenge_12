@@ -35,3 +35,13 @@ metricCardArray.forEach((card) => {
     card.computedStyleMap.backgroundColor = "puple";
 });
 
+//Added 3 metric cards 
+dashboardById.appendChild(createMetricCard("revenueCard", "Revenue"));
+dashboardById.appendChild(createMetricCard("profitCard", "Profit"));
+dashboardById.appendChild(createMetricCard("expensesCard", "Expenses"));
+//Added starting values
+document.getElementById("revenuueCard").querySelector("p").innerText = "$400";
+document.getElementById("profitCard").querySelector("p").innerText = "$600";
+document.getElementById("expensesCard").querySelector("p").innerText = "$800";
+
+// Task 3: Dynamic Inventory Management – Adding and Removing Items
